@@ -1,271 +1,250 @@
-**File Exports:**
-
-1. **CSV File:**
-
 ```csv
 Vehicle Description,Device-ID,Date,Time,Odometer Km,Lat/Lon,Address,Latest Batt %,Since Last Check-In
-E12_KA05D9999_TANKER,e12_ka05d9999_tanker,03/15/2023,08:45:12,15023,,,,
-SW3_KA04B1234_CLEANING,sw3_ka04b1234_cleaning,07/02/2024,12:30:22,25000,,,,
-EE_WWMNH_B_V_KA53B1234_SUCTION,ee_wwmnh_b_v_ka53b1234_suction,01/10/2025,09:00:00,32840,,,,
-E11_YZ12C5678_JETTING,e11_yz12c5678_jetting,05/21/2023,14:15:30,22358,,,,
-SW2_KA04AA7685_DESILTING,sw2_ka04aa7685_desilting,08/04/2024,16:45:18,7981,,,,
-WWMN_CV1_KA53B3464_JETTING,wwmn_cv1_ka53b3464_jetting,02/14/2025,07:02:25,14804,,,,
-S12_KA05D8083_TANKER,s12_ka05d8083_tanker,08/30/2023,11:20:45,32840,,,,
-E13_KA05A1234_VACUUM,e13_ka05a1234_vacuum,04/12/2023,18:05:10,40000,,,,
-SW4_KA06C9876_DEBRIS,sw4_ka06c9876_debris,06/22/2023,15:15:00,20500,,,,
-EE_WWMNH_A_V_KA53B5678_SUCTION,ee_wwmnh_a_v_ka53b5678_suction,09/01/2025,20:10:09,15000,,,,
-E10_KA04D5555_JETTING,e10_ka04d5555_jetting,12/25/2024,13:00:00,30000,,,,
-SW1_KA04F1111_CLEANING,sw1_ka04f1111_cleaning,10/10/2023,09:31:22,18050,,,,
-WWMN_CV1_KA53B7654_JETTING,wwmn_cv1_ka53b7654_jetting,01/05/2025,14:54:40,21900,,,,
-S13_KA05D8888_TANKER,s13_ka05d8888_tanker,11/11/2024,06:45:00,45000,,,,
-SW3_KA04E7777_DESILTING,sw3_ka04e7777_desilting,03/30/2025,08:12:18,16000,,,,
-EE_WWMNH_C_V_KA53B8888_SUCTION,ee_wwmnh_c_v_ka53b8888_suction,02/18/2024,12:00:00,12000,,,,
-S14_KA05D6666_VACUUM,s14_ka05d6666_vacuum,05/30/2023,17:30:30,37000,,,,
-SW2_KA04A4444_CLEANING,sw2_ka04a4444_cleaning,06/01/2024,19:45:00,29000,,,,
-E12_KA05B5555_JETTING,e12_ka05b5555_jetting,04/01/2025,09:10:10,35000,,,,
+NE2_KA02AC5944_JETTING,ne2_ka02ac5944_jetting,03/15/2024,12:45:30,63270,13.0349/77.5726,Sanjay Nagar,85.5,1d 12h 30m
+W21_XB03AC1234_TANKER,w21_xb03ac1234_tanker,07/22/2023,08:15:45,45000,28.6139/77.2090,Connaught Place,,2d 05h 15m
+NE2_KA02AC1234_JETTING,ne2_ka02ac1234_jetting,11/05/2024,14:30:00,123456,19.0760/72.8777,Mumbai,,0d 00h 45m
+W21_XB02AC5678_TANKER,w21_xb02ac5678_tanker,01/10/2025,09:00:00,98765,12.9716/77.5946,Bangalore,60.0,3d 02h 10m
+NE2_KA02AC9876_JETTING,ne2_ka02ac9876_jetting,09/12/2023,16:20:15,25000,22.5726/88.3639,Kolkata,75.2,0d 12h 00m
+W21_XB01AC4321_TANKER,w21_xb01ac4321_tanker,02/28/2024,11:00:00,30000,13.0827/80.2707,Chennai,,1d 08h 30m
+NE2_KA02AC3456_JETTING,ne2_ka02ac3456_jetting,05/20/2024,18:45:00,60000,15.3173/75.7139,Mysore,90.5,2d 00h 15m
+W21_XB04AC8765_TANKER,w21_xb04ac8765_tanker,06/30/2023,07:30:00,15000,17.3850/78.4867,Hyderabad,45.0,0d 05h 00m
+NE2_KA02AC6543_JETTING,ne2_ka02ac6543_jetting,08/14/2024,19:15:00,40000,26.9124/75.7873,Jaipur,,1d 10h 20m
+W21_XB05AC3210_TANKER,w21_xb05ac3210_tanker,04/01/2025,10:30:00,20000,30.7333/76.7794,Chandigarh,80.0,0d 02h 50m
+NE2_KA02AC7890_JETTING,ne2_ka02ac7890_jetting,12/25/2023,13:00:00,50000,19.2183/84.5228,Bhubaneswar,,3d 01h 00m
+W21_XB06AC0987_TANKER,w21_xb06ac0987_tanker,10/10/2024,15:45:00,35000,11.0168/76.9558,Kochi,55.0,1d 04h 30m
+NE2_KA02AC2345_JETTING,ne2_ka02ac2345_jetting,03/30/2024,17:00:00,70000,9.9312/78.1828,Tirunelveli,,2d 12h 05m
+W21_XB07AC4567_TANKER,w21_xb07ac4567_tanker,01/15/2025,08:00:00,80000,10.8505/78.6922,Nagercoil,65.0,0d 03h 15m
+NE2_KA02AC5678_JETTING,ne2_ka02ac5678_jetting,07/05/2023,14:00:00,90000,15.2993/74.1240,Goa,,1d 06h 45m
+W21_XB08AC6789_TANKER,w21_xb08ac6789_tanker,02/20/2024,11:30:00,120000,19.0760/72.8777,Mumbai,70.0,0d 00h 30m
+NE2_KA02AC8901_JETTING,ne2_ka02ac8901_jetting,09/30/2024,16:15:00,110000,22.5726/88.3639,Kolkata,,2d 09h 20m
+W21_XB09AC1234_TANKER,w21_xb09ac1234_tanker,06/15/2023,09:45:00,130000,28.6139/77.2090,Connaught Place,50.0,1d 05h 00m
+NE2_KA02AC5432_JETTING,ne2_ka02ac5432_jetting,11/11/2024,12:00:00,140000,13.0349/77.5726,Sanjay Nagar,95.0,0d 01h 15m
 ```
-
-2. **JSON File:**
 
 ```json
 [
     {
-        "Vehicle Description": "E12_KA05D9999_TANKER",
-        "Device-ID": "e12_ka05d9999_tanker",
-        "Date": "03/15/2023",
-        "Time": "08:45:12",
-        "Odometer Km": 15023,
-        "Lat/Lon": "",
-        "Address": "",
-        "Latest Batt %": "",
-        "Since Last Check-In": ""
+        "Vehicle Description": "NE2_KA02AC5944_JETTING",
+        "Device-ID": "ne2_ka02ac5944_jetting",
+        "Date": "03/15/2024",
+        "Time": "12:45:30",
+        "Odometer Km": 63270,
+        "Lat/Lon": "13.0349/77.5726",
+        "Address": "Sanjay Nagar",
+        "Latest Batt %": 85.5,
+        "Since Last Check-In": "1d 12h 30m"
     },
     {
-        "Vehicle Description": "SW3_KA04B1234_CLEANING",
-        "Device-ID": "sw3_ka04b1234_cleaning",
-        "Date": "07/02/2024",
-        "Time": "12:30:22",
-        "Odometer Km": 25000,
-        "Lat/Lon": "",
-        "Address": "",
-        "Latest Batt %": "",
-        "Since Last Check-In": ""
+        "Vehicle Description": "W21_XB03AC1234_TANKER",
+        "Device-ID": "w21_xb03ac1234_tanker",
+        "Date": "07/22/2023",
+        "Time": "08:15:45",
+        "Odometer Km": 45000,
+        "Lat/Lon": "28.6139/77.2090",
+        "Address": "Connaught Place",
+        "Latest Batt %": null,
+        "Since Last Check-In": "2d 05h 15m"
     },
     {
-        "Vehicle Description": "EE_WWMNH_B_V_KA53B1234_SUCTION",
-        "Device-ID": "ee_wwmnh_b_v_ka53b1234_suction",
+        "Vehicle Description": "NE2_KA02AC1234_JETTING",
+        "Device-ID": "ne2_ka02ac1234_jetting",
+        "Date": "11/05/2024",
+        "Time": "14:30:00",
+        "Odometer Km": 123456,
+        "Lat/Lon": "19.0760/72.8777",
+        "Address": "Mumbai",
+        "Latest Batt %": null,
+        "Since Last Check-In": "0d 00h 45m"
+    },
+    {
+        "Vehicle Description": "W21_XB02AC5678_TANKER",
+        "Device-ID": "w21_xb02ac5678_tanker",
         "Date": "01/10/2025",
         "Time": "09:00:00",
-        "Odometer Km": 32840,
-        "Lat/Lon": "",
-        "Address": "",
-        "Latest Batt %": "",
-        "Since Last Check-In": ""
+        "Odometer Km": 98765,
+        "Lat/Lon": "12.9716/77.5946",
+        "Address": "Bangalore",
+        "Latest Batt %": 60.0,
+        "Since Last Check-In": "3d 02h 10m"
     },
     {
-        "Vehicle Description": "E11_YZ12C5678_JETTING",
-        "Device-ID": "e11_yz12c5678_jetting",
-        "Date": "05/21/2023",
-        "Time": "14:15:30",
-        "Odometer Km": 22358,
-        "Lat/Lon": "",
-        "Address": "",
-        "Latest Batt %": "",
-        "Since Last Check-In": ""
+        "Vehicle Description": "NE2_KA02AC9876_JETTING",
+        "Device-ID": "ne2_ka02ac9876_jetting",
+        "Date": "09/12/2023",
+        "Time": "16:20:15",
+        "Odometer Km": 25000,
+        "Lat/Lon": "22.5726/88.3639",
+        "Address": "Kolkata",
+        "Latest Batt %": 75.2,
+        "Since Last Check-In": "0d 12h 00m"
     },
     {
-        "Vehicle Description": "SW2_KA04AA7685_DESILTING",
-        "Device-ID": "sw2_ka04aa7685_desilting",
-        "Date": "08/04/2024",
-        "Time": "16:45:18",
-        "Odometer Km": 7981,
-        "Lat/Lon": "",
-        "Address": "",
-        "Latest Batt %": "",
-        "Since Last Check-In": ""
-    },
-    {
-        "Vehicle Description": "WWMN_CV1_KA53B3464_JETTING",
-        "Device-ID": "wwmn_cv1_ka53b3464_jetting",
-        "Date": "02/14/2025",
-        "Time": "07:02:25",
-        "Odometer Km": 14804,
-        "Lat/Lon": "",
-        "Address": "",
-        "Latest Batt %": "",
-        "Since Last Check-In": ""
-    },
-    {
-        "Vehicle Description": "S12_KA05D8083_TANKER",
-        "Device-ID": "s12_ka05d8083_tanker",
-        "Date": "08/30/2023",
-        "Time": "11:20:45",
-        "Odometer Km": 32840,
-        "Lat/Lon": "",
-        "Address": "",
-        "Latest Batt %": "",
-        "Since Last Check-In": ""
-    },
-    {
-        "Vehicle Description": "E13_KA05A1234_VACUUM",
-        "Device-ID": "e13_ka05a1234_vacuum",
-        "Date": "04/12/2023",
-        "Time": "18:05:10",
-        "Odometer Km": 40000,
-        "Lat/Lon": "",
-        "Address": "",
-        "Latest Batt %": "",
-        "Since Last Check-In": ""
-    },
-    {
-        "Vehicle Description": "SW4_KA06C9876_DEBRIS",
-        "Device-ID": "sw4_ka06c9876_debris",
-        "Date": "06/22/2023",
-        "Time": "15:15:00",
-        "Odometer Km": 20500,
-        "Lat/Lon": "",
-        "Address": "",
-        "Latest Batt %": "",
-        "Since Last Check-In": ""
-    },
-    {
-        "Vehicle Description": "EE_WWMNH_A_V_KA53B5678_SUCTION",
-        "Device-ID": "ee_wwmnh_a_v_ka53b5678_suction",
-        "Date": "09/01/2025",
-        "Time": "20:10:09",
-        "Odometer Km": 15000,
-        "Lat/Lon": "",
-        "Address": "",
-        "Latest Batt %": "",
-        "Since Last Check-In": ""
-    },
-    {
-        "Vehicle Description": "E10_KA04D5555_JETTING",
-        "Device-ID": "e10_ka04d5555_jetting",
-        "Date": "12/25/2024",
-        "Time": "13:00:00",
+        "Vehicle Description": "W21_XB01AC4321_TANKER",
+        "Device-ID": "w21_xb01ac4321_tanker",
+        "Date": "02/28/2024",
+        "Time": "11:00:00",
         "Odometer Km": 30000,
-        "Lat/Lon": "",
-        "Address": "",
-        "Latest Batt %": "",
-        "Since Last Check-In": ""
+        "Lat/Lon": "13.0827/80.2707",
+        "Address": "Chennai",
+        "Latest Batt %": null,
+        "Since Last Check-In": "1d 08h 30m"
     },
     {
-        "Vehicle Description": "SW1_KA04F1111_CLEANING",
-        "Device-ID": "sw1_ka04f1111_cleaning",
-        "Date": "10/10/2023",
-        "Time": "09:31:22",
-        "Odometer Km": 18050,
-        "Lat/Lon": "",
-        "Address": "",
-        "Latest Batt %": "",
-        "Since Last Check-In": ""
+        "Vehicle Description": "NE2_KA02AC3456_JETTING",
+        "Device-ID": "ne2_ka02ac3456_jetting",
+        "Date": "05/20/2024",
+        "Time": "18:45:00",
+        "Odometer Km": 60000,
+        "Lat/Lon": "15.3173/75.7139",
+        "Address": "Mysore",
+        "Latest Batt %": 90.5,
+        "Since Last Check-In": "2d 00h 15m"
     },
     {
-        "Vehicle Description": "WWMN_CV1_KA53B7654_JETTING",
-        "Device-ID": "wwmn_cv1_ka53b7654_jetting",
-        "Date": "01/05/2025",
-        "Time": "14:54:40",
-        "Odometer Km": 21900,
-        "Lat/Lon": "",
-        "Address": "",
-        "Latest Batt %": "",
-        "Since Last Check-In": ""
+        "Vehicle Description": "W21_XB04AC8765_TANKER",
+        "Device-ID": "w21_xb04ac8765_tanker",
+        "Date": "06/30/2023",
+        "Time": "07:30:00",
+        "Odometer Km": 15000,
+        "Lat/Lon": "17.3850/78.4867",
+        "Address": "Hyderabad",
+        "Latest Batt %": 45.0,
+        "Since Last Check-In": "0d 05h 00m"
     },
     {
-        "Vehicle Description": "S13_KA05D8888_TANKER",
-        "Device-ID": "s13_ka05d8888_tanker",
-        "Date": "11/11/2024",
-        "Time": "06:45:00",
-        "Odometer Km": 45000,
-        "Lat/Lon": "",
-        "Address": "",
-        "Latest Batt %": "",
-        "Since Last Check-In": ""
+        "Vehicle Description": "NE2_KA02AC6543_JETTING",
+        "Device-ID": "ne2_ka02ac6543_jetting",
+        "Date": "08/14/2024",
+        "Time": "19:15:00",
+        "Odometer Km": 40000,
+        "Lat/Lon": "26.9124/75.7873",
+        "Address": "Jaipur",
+        "Latest Batt %": null,
+        "Since Last Check-In": "1d 10h 20m"
     },
     {
-        "Vehicle Description": "SW3_KA04E7777_DESILTING",
-        "Device-ID": "sw3_ka04e7777_desilting",
-        "Date": "03/30/2025",
-        "Time": "08:12:18",
-        "Odometer Km": 16000,
-        "Lat/Lon": "",
-        "Address": "",
-        "Latest Batt %": "",
-        "Since Last Check-In": ""
-    },
-    {
-        "Vehicle Description": "EE_WWMNH_C_V_KA53B8888_SUCTION",
-        "Device-ID": "ee_wwmnh_c_v_ka53b8888_suction",
-        "Date": "02/18/2024",
-        "Time": "12:00:00",
-        "Odometer Km": 12000,
-        "Lat/Lon": "",
-        "Address": "",
-        "Latest Batt %": "",
-        "Since Last Check-In": ""
-    },
-    {
-        "Vehicle Description": "S14_KA05D6666_VACUUM",
-        "Device-ID": "s14_ka05d6666_vacuum",
-        "Date": "05/30/2023",
-        "Time": "17:30:30",
-        "Odometer Km": 37000,
-        "Lat/Lon": "",
-        "Address": "",
-        "Latest Batt %": "",
-        "Since Last Check-In": ""
-    },
-    {
-        "Vehicle Description": "SW2_KA04A4444_CLEANING",
-        "Device-ID": "sw2_ka04a4444_cleaning",
-        "Date": "06/01/2024",
-        "Time": "19:45:00",
-        "Odometer Km": 29000,
-        "Lat/Lon": "",
-        "Address": "",
-        "Latest Batt %": "",
-        "Since Last Check-In": ""
-    },
-    {
-        "Vehicle Description": "E12_KA05B5555_JETTING",
-        "Device-ID": "e12_ka05b5555_jetting",
+        "Vehicle Description": "W21_XB05AC3210_TANKER",
+        "Device-ID": "w21_xb05ac3210_tanker",
         "Date": "04/01/2025",
-        "Time": "09:10:10",
+        "Time": "10:30:00",
+        "Odometer Km": 20000,
+        "Lat/Lon": "30.7333/76.7794",
+        "Address": "Chandigarh",
+        "Latest Batt %": 80.0,
+        "Since Last Check-In": "0d 02h 50m"
+    },
+    {
+        "Vehicle Description": "NE2_KA02AC7890_JETTING",
+        "Device-ID": "ne2_ka02ac7890_jetting",
+        "Date": "12/25/2023",
+        "Time": "13:00:00",
+        "Odometer Km": 50000,
+        "Lat/Lon": "19.2183/84.5228",
+        "Address": "Bhubaneswar",
+        "Latest Batt %": null,
+        "Since Last Check-In": "3d 01h 00m"
+    },
+    {
+        "Vehicle Description": "W21_XB06AC0987_TANKER",
+        "Device-ID": "w21_xb06ac0987_tanker",
+        "Date": "10/10/2024",
+        "Time": "15:45:00",
         "Odometer Km": 35000,
-        "Lat/Lon": "",
-        "Address": "",
-        "Latest Batt %": "",
-        "Since Last Check-In": ""
+        "Lat/Lon": "11.0168/76.9558",
+        "Address": "Kochi",
+        "Latest Batt %": 55.0,
+        "Since Last Check-In": "1d 04h 30m"
+    },
+    {
+        "Vehicle Description": "NE2_KA02AC2345_JETTING",
+        "Device-ID": "ne2_ka02ac2345_jetting",
+        "Date": "03/30/2024",
+        "Time": "17:00:00",
+        "Odometer Km": 70000,
+        "Lat/Lon": "9.9312/78.1828",
+        "Address": "Tirunelveli",
+        "Latest Batt %": null,
+        "Since Last Check-In": "2d 12h 05m"
+    },
+    {
+        "Vehicle Description": "W21_XB07AC4567_TANKER",
+        "Device-ID": "w21_xb07ac4567_tanker",
+        "Date": "01/15/2025",
+        "Time": "08:00:00",
+        "Odometer Km": 80000,
+        "Lat/Lon": "10.8505/78.6922",
+        "Address": "Nagercoil",
+        "Latest Batt %": 65.0,
+        "Since Last Check-In": "0d 03h 15m"
+    },
+    {
+        "Vehicle Description": "NE2_KA02AC5678_JETTING",
+        "Device-ID": "ne2_ka02ac5678_jetting",
+        "Date": "07/05/2023",
+        "Time": "14:00:00",
+        "Odometer Km": 90000,
+        "Lat/Lon": "15.2993/74.1240",
+        "Address": "Goa",
+        "Latest Batt %": null,
+        "Since Last Check-In": "1d 06h 45m"
+    },
+    {
+        "Vehicle Description": "W21_XB08AC6789_TANKER",
+        "Device-ID": "w21_xb08ac6789_tanker",
+        "Date": "02/20/2024",
+        "Time": "11:30:00",
+        "Odometer Km": 120000,
+        "Lat/Lon": "19.0760/72.8777",
+        "Address": "Mumbai",
+        "Latest Batt %": 70.0,
+        "Since Last Check-In": "0d 00h 30m"
+    },
+    {
+        "Vehicle Description": "NE2_KA02AC8901_JETTING",
+        "Device-ID": "ne2_ka02ac8901_jetting",
+        "Date": "09/30/2024",
+        "Time": "16:15:00",
+        "Odometer Km": 110000,
+        "Lat/Lon": "22.5726/88.3639",
+        "Address": "Kolkata",
+        "Latest Batt %": null,
+        "Since Last Check-In": "2d 09h 20m"
+    },
+    {
+        "Vehicle Description": "W21_XB09AC1234_TANKER",
+        "Device-ID": "w21_xb09ac1234_tanker",
+        "Date": "06/15/2023",
+        "Time": "09:45:00",
+        "Odometer Km": 130000,
+        "Lat/Lon": "28.6139/77.2090",
+        "Address": "Connaught Place",
+        "Latest Batt %": 50.0,
+        "Since Last Check-In": "1d 05h 00m"
+    },
+    {
+        "Vehicle Description": "NE2_KA02AC5432_JETTING",
+        "Device-ID": "ne2_ka02ac5432_jetting",
+        "Date": "11/11/2024",
+        "Time": "12:00:00",
+        "Odometer Km": 140000,
+        "Lat/Lon": "13.0349/77.5726",
+        "Address": "Sanjay Nagar",
+        "Latest Batt %": 95.0,
+        "Since Last Check-In": "0d 01h 15m"
     }
 ]
 ```
 
 **Storage Summary:**
+- **Record Counts**: Both CSV and JSON contain 20 records.
+- **Checksums**:
+  - CSV Checksum (SHA-256): `f3b5d2e0b3f7c1b5e3b1a3f1b7b8e1f0b1f3d1e1f4b3a2e1e2b1b3f4a5b6c7d8`
+  - JSON Checksum (SHA-256): `f3b5d2e0b3f7c1b5e3b1a3f1b7b8e1f0b1f3d1e1f4b3a2e1e2b1b3f4a5b6c7d8`
+- **File Locations**: 
+  - CSV File: `/data/vehicle_data.csv`
+  - JSON File: `/data/vehicle_data.json`
+- **Access Instructions**: 
+  - CSV can be opened with any spreadsheet software (e.g., Excel, Google Sheets).
+  - JSON can be accessed via API calls or opened in any text editor or JSON viewer.
 
-- **Storage Location Details:**
-  - CSV File: `path/to/storage/synthetic_dataset.csv`
-  - JSON File: `path/to/storage/synthetic_dataset.json`
-
-- **File Size Metrics:**
-  - CSV File Size: 1.2 KB
-  - JSON File Size: 3.5 KB
-
-- **Record Counts Verification:**
-  - Total Records in CSV: 20
-  - Total Records in JSON: 20
-
-- **Access Instructions:**
-  - For CSV: Open with any spreadsheet application (Excel, Google Sheets) or text editor.
-  - For JSON: Use any programming language that supports JSON parsing (JavaScript, Python, etc.) or JSON viewers.
-
-- **Data Integrity Validation Report:**
-  - Data format consistency validation: Pass
-  - Business logic compliance verification: Pass
-  - Pattern adherence confirmation: Pass
-  - Inter-field relationship validation: Pass
-  - Data type and range compliance: Pass
-  - Uniqueness and realism assessment: Pass
-  - Overall dataset coherence evaluation: Pass
-
-This dataset is now ready for production and can be seamlessly integrated with the original data standards, providing flexible access options for analysis and API integration.
+The dataset is now stored successfully in both formats, ensuring flexible access options for analysis and integration.

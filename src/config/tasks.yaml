@@ -1,7 +1,7 @@
 ---
 analyze_csv_data_template_for_patterns:
   description: |-
-    Analyze the CSV data template provided in {csv_data_template} to identify data structure and patterns. The CSV contains headers and sample rows that serve as reference. Focus on understanding:
+    Analyze the CSV data template provided in {csv_data_template} to identify data structure and patterns. The CSV contains headers and sample rows that serve as reference. Produce a deterministic, complete analysis that downstream tasks can strictly follow. Focus on understanding:
 
     1. **Column Structure**: Parse headers and understand field names and their purposes
     2. **Data Types**: Determine data types for each column (strings, integers, dates, coordinates, etc.)
@@ -12,6 +12,16 @@ analyze_csv_data_template_for_patterns:
     7. **Pattern Recognition**: Identify naming patterns, sequential numbering, formatting rules
 
     Parse the provided CSV data from {csv_data_template} and provide comprehensive analysis for synthetic data generation.
+
+    Output contract:
+    - The report MUST be valid GitHub-flavored Markdown.
+    - For every column include: name, inferred data type, nullable (true|false), allowed values/range, regex pattern (if applicable), and example values from the template.
+    - Include an explicit "Schema Definition" section with a machine-readable checklist:
+      - Start the section with a fenced code block tagged as json named SCHEMA. The value is a JSON array of column specs like:
+        [
+          {"name":"string","type":"string|integer|float|date|datetime|boolean","nullable":false,"format":"yyyy-MM-dd or null","pattern":"regex or null","min":null,"max":null,"enum":null}
+        ]
+      - No comments inside the JSON block.
   expected_output: |-
     A detailed data pattern analysis report in markdown format containing:
 
@@ -34,12 +44,16 @@ analyze_csv_data_template_for_patterns:
     - Value generation parameters and acceptable ranges
     - Inter-field relationship rules to preserve
 
+    Additionally include:
+    - SCHEMA json block as defined in the Output contract
+    - A "Validation Rules" checklist with explicit pass/fail criteria for each column (non-empty constraints, regex conformance, range bounds, uniqueness rules, cross-field dependencies)
+
     This analysis will serve as the comprehensive foundation for creating authentic synthetic data that matches the original template.
   agent: csv_data_pattern_analyst
 
 generate_synthetic_data_rows:
   description: |-
-    Based on the analyzed data patterns from the CSV template, generate {num_rows} new synthetic data rows that accurately mimic the original dataset characteristics. Ensure:
+    Based on the analyzed data patterns from the CSV template, generate {num_rows} new synthetic data rows that accurately mimic the original dataset characteristics. Strictly adhere to the SCHEMA and Validation Rules defined by the previous task. Ensure:
 
     1. Maintain exact same column structure and data types from the CSV template
     2. Follow identified naming conventions and ID patterns
@@ -50,20 +64,26 @@ generate_synthetic_data_rows:
     7. Preserve formatting patterns and data consistency rules
 
     The synthetic data should be indistinguishable from real data in terms of format and patterns, suitable for testing or augmentation purposes.
+
+    Output contract:
+    - Produce ONLY one fenced code block labeled csv with the header row followed by {num_rows} rows.
+    - Do NOT include any additional commentary before or after the code block.
+    - No empty fields are allowed unless the SCHEMA explicitly sets nullable=true for that column; otherwise fill with valid values.
+    - All values MUST conform to types, formats, patterns, ranges, and relationship rules from the analysis.
   expected_output: |-
     A complete set of {num_rows} synthetic data rows in the exact same format as the original dataset. The output should include:
-    - Properly formatted tabular data matching the original structure
+    - Properly formatted CSV matching the original structure
     - Sequential or appropriate numbering/ID generation
     - Realistic and diverse data values
     - Consistent formatting and data types
-    - Clear presentation in markdown table format or CSV-ready format
+    - Single fenced code block tagged as csv, ready to be saved directly to a .csv file
   agent: synthetic_data_generator
   context:
     - analyze_csv_data_template_for_patterns
 
 validate_and_finalize_synthetic_dataset:
   description: |-
-    Review and validate the generated synthetic data to ensure it meets quality standards and consistency with the original dataset patterns. Perform comprehensive quality checks including:
+    Review and validate the generated synthetic data to ensure it meets quality standards and consistency with the original dataset patterns. Use the SCHEMA and Validation Rules to perform deterministic checks. Perform comprehensive quality checks including:
 
     1. Data format consistency validation
     2. Business logic compliance verification
@@ -74,11 +94,16 @@ validate_and_finalize_synthetic_dataset:
     7. Overall dataset coherence evaluation
 
     If any issues are identified, provide specific feedback for improvement. Ensure the final dataset is production-ready and maintains the same standards as the original data.
+
+    Output contract:
+    - Start with a concise pass/fail table per rule.
+    - If any rule fails, provide a corrected CSV (single fenced csv block) with exactly {num_rows} rows adhering to all rules.
+    - If all rules pass, echo the approved CSV (single fenced csv block) for persistence.
   expected_output: |-
     A final validation report containing:
     - Quality assessment summary with pass/fail status for each validation criterion
     - Any identified issues or inconsistencies with recommended fixes
-    - Final approved synthetic dataset with {num_rows} rows in proper format
+    - Final approved synthetic dataset with {num_rows} rows in proper format (single fenced csv block)
     - Data quality metrics and compliance confirmation
     - Ready-to-use dataset that seamlessly integrates with the original data standards
   agent: data_quality_orchestrator
@@ -102,6 +127,11 @@ store_synthetic_data_in_multiple_formats:
     - Verify data consistency between CSV and JSON files
     - Validate successful storage and accessibility
     - Provide access instructions and file locations
+
+    Output contract:
+    - Provide exactly two fenced code blocks in this order: csv then json, containing the same {num_rows} records.
+    - The json block MUST be a JSON array of objects whose keys match the CSV headers.
+    - After the code blocks, provide a short textual summary with record counts and a checksum (SHA-256) of each block content for integrity.
 
     Ensure the same {num_rows} records are available in both formats with consistent data integrity.
   expected_output: |-

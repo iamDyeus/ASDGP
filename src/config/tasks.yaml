@@ -1,32 +1,53 @@
 ---
-extract_and_analyze_pdf_data_patterns:
+analyze_csv_data_template_for_patterns:
   description: |-
-    Analyze the provided PDF report to extract tabular data structure and identify patterns. Focus on understanding:
-    1. Table schema and column definitions
-    2. Data types for each field (e.g., strings, dates, coordinates, numerical values)
-    3. Data formats and patterns (e.g., date formats, ID patterns, naming conventions)
-    4. Value ranges and distributions
-    5. Relationships between different fields
-    6. Business logic and constraints evident in the data
+    Analyze the CSV data template provided in {csv_data_template} to identify data structure and patterns. The CSV contains headers and sample rows that serve as reference. Focus on understanding:
 
-    Provide a comprehensive analysis that will guide synthetic data generation for the dataset.
-  expected_output: "A detailed data pattern analysis report in markdown format containing:\n-
-    Table structure and field definitions\n- Identified data types and formats for
-    each column\n- Value patterns, ranges, and distributions\n- Inter-field relationships
-    and dependencies  \n- Business logic constraints\n- Sample data patterns and examples\nThis
-    analysis will serve as the foundation for generating {num_rows} synthetic data
-    rows."
-  agent: pdf_data_analyst
+    1. **Column Structure**: Parse headers and understand field names and their purposes
+    2. **Data Types**: Determine data types for each column (strings, integers, dates, coordinates, etc.)
+    3. **Data Formats**: Recognize patterns like date formats, ID structures, naming conventions, coordinate formats
+    4. **Value Analysis**: Understand value ranges, distributions, and constraints from sample data
+    5. **Field Relationships**: Identify connections and dependencies between different columns
+    6. **Business Logic**: Extract evident business rules and data validation patterns from samples
+    7. **Pattern Recognition**: Identify naming patterns, sequential numbering, formatting rules
+
+    Parse the provided CSV data from {csv_data_template} and provide comprehensive analysis for synthetic data generation.
+  expected_output: |-
+    A detailed data pattern analysis report in markdown format containing:
+
+    **CSV Structure Analysis:**
+    - Complete list of column headers and their data types
+    - Sample data examples for each column
+    - Field relationships and dependencies
+    - Value patterns, ranges, and distributions
+
+    **Data Format Specifications:**
+    - Exact format requirements for each field type
+    - Pattern examples (e.g., date formats, ID patterns, coordinate formats)
+    - Naming conventions and structural rules
+    - Constraints and validation requirements
+
+    **Synthetic Generation Guidelines:**
+    - Specific rules for generating realistic {num_rows} synthetic records
+    - Business logic constraints to maintain
+    - Format specifications to follow precisely
+    - Value generation parameters and acceptable ranges
+    - Inter-field relationship rules to preserve
+
+    This analysis will serve as the comprehensive foundation for creating authentic synthetic data that matches the original template.
+  agent: csv_data_pattern_analyst
+
 generate_synthetic_data_rows:
   description: |-
-    Based on the analyzed data patterns from the PDF report, generate {num_rows} new synthetic data rows that accurately mimic the original dataset characteristics. Ensure:
+    Based on the analyzed data patterns from the CSV template, generate {num_rows} new synthetic data rows that accurately mimic the original dataset characteristics. Ensure:
 
-    1. Maintain exact same column structure and data types
+    1. Maintain exact same column structure and data types from the CSV template
     2. Follow identified naming conventions and ID patterns
-    3. Respect value ranges and distributions from the analysis
+    3. Respect value ranges and distributions from the sample data
     4. Create realistic relationships between fields (e.g., coordinates matching addresses)
     5. Apply business logic constraints identified in the analysis
     6. Generate diverse but realistic data that could plausibly exist in the same system
+    7. Preserve formatting patterns and data consistency rules
 
     The synthetic data should be indistinguishable from real data in terms of format and patterns, suitable for testing or augmentation purposes.
   expected_output: |-
@@ -38,16 +59,21 @@ generate_synthetic_data_rows:
     - Clear presentation in markdown table format or CSV-ready format
   agent: synthetic_data_generator
   context:
-  - extract_and_analyze_pdf_data_patterns
+    - analyze_csv_data_template_for_patterns
+
 validate_and_finalize_synthetic_dataset:
-  description: "Review and validate the generated synthetic data to ensure it meets
-    quality standards and consistency with the original dataset patterns. Perform
-    comprehensive quality checks including:\n\n1. Data format consistency validation\n2.
-    Business logic compliance verification  \n3. Pattern adherence confirmation\n4.
-    Inter-field relationship validation\n5. Data type and range compliance\n6. Uniqueness
-    and realism assessment\n7. Overall dataset coherence evaluation\n\nIf any issues
-    are identified, provide specific feedback for improvement. Ensure the final dataset
-    is production-ready and maintains the same standards as the original data."
+  description: |-
+    Review and validate the generated synthetic data to ensure it meets quality standards and consistency with the original dataset patterns. Perform comprehensive quality checks including:
+
+    1. Data format consistency validation
+    2. Business logic compliance verification
+    3. Pattern adherence confirmation
+    4. Inter-field relationship validation
+    5. Data type and range compliance
+    6. Uniqueness and realism assessment
+    7. Overall dataset coherence evaluation
+
+    If any issues are identified, provide specific feedback for improvement. Ensure the final dataset is production-ready and maintains the same standards as the original data.
   expected_output: |-
     A final validation report containing:
     - Quality assessment summary with pass/fail status for each validation criterion
@@ -57,69 +83,41 @@ validate_and_finalize_synthetic_dataset:
     - Ready-to-use dataset that seamlessly integrates with the original data standards
   agent: data_quality_orchestrator
   context:
-  - extract_and_analyze_pdf_data_patterns
-  - generate_synthetic_data_rows
-store_synthetic_data_in_weaviate:
+    - analyze_csv_data_template_for_patterns
+    - generate_synthetic_data_rows
+
+store_synthetic_data_in_multiple_formats:
   description: |-
-    Take the validated synthetic dataset and store it into Weaviate vector database for efficient semantic search and analytics. Your tasks include:
+    Take the validated synthetic dataset and store it in two formats: CSV and JSON. Your tasks include:
 
-    1. **Schema Design**: Create an optimal Weaviate schema for the data structure
-    2. **Data Preparation**: Format the synthetic data for Weaviate ingestion, ensuring all fields are properly structured
-    3. **Vector Storage**: Store all {num_rows} synthetic records in Weaviate with proper vectorization
-    4. **Index Optimization**: Configure appropriate indexing for analytical queries
-    5. **Metadata Enrichment**: Add relevant metadata to enhance searchability
-    6. **Validation**: Verify successful storage and retrieval capabilities
-    7. **Documentation**: Provide clear documentation on the stored data structure and access methods
+    **1. CSV File Export:**
+    - Generate a clean CSV file with proper headers and formatting
+    - Ensure all {num_rows} synthetic records are included
 
-    Ensure the data is stored in a way that enables both semantic search and traditional analytical queries.
+    **2. JSON File Export:**
+    - Create a structured JSON file for API integration and programmatic access
+    - Ensure all {num_rows} synthetic records are included
+
+    **3. Quality Assurance:**
+    - Verify data consistency between CSV and JSON files
+    - Validate successful storage and accessibility
+    - Provide access instructions and file locations
+
+    Ensure the same {num_rows} records are available in both formats with consistent data integrity.
   expected_output: |-
-    A comprehensive report confirming successful storage of {num_rows} synthetic records in Weaviate, including:
+    A data package containing:
 
-    - Weaviate schema definition and configuration details
-    - Data ingestion summary with record counts and success metrics
-    - Index configuration and optimization settings
-    - Sample queries demonstrating data accessibility
-    - Documentation for future data retrieval and analysis
-    - Performance metrics and storage statistics
-    - Guidelines for analytical querying and semantic search capabilities
+    **File Exports:**
+    - **CSV File**: Clean, properly formatted CSV with headers
+    - **JSON File**: Structured JSON format for API and programmatic use
 
-    The synthetic data should be fully accessible via Weaviate's vector search capabilities and ready for analytical exploration.
-  agent: weaviate_data_storage_specialist
+    **Storage Summary:**
+    - Storage location details for both files
+    - File size metrics and record counts verification
+    - Access instructions for each format
+    - Data integrity validation report confirming consistency between CSV and JSON
+
+    The synthetic dataset will be immediately usable for spreadsheet analysis and API integration.
+  agent: multi_format_data_storage_specialist
   context:
-  - validate_and_finalize_synthetic_dataset
-perform_analytical_queries_on_synthetic_data:
-  description: |-
-    Using the WeaviateVectorSearchTool, analyze the stored synthetic data to answer the specific analytical question: '{query}'. Your tasks include:
-
-    1. **Query Analysis**: Understand and parse the specific analytical question provided
-    2. **Data Exploration**: Query the {num_rows} synthetic records to gather relevant information
-    3. **Statistical Analysis**: Generate key statistics and insights related to the query
-    4. **Pattern Recognition**: Identify patterns that directly relate to the analytical question
-    5. **Semantic Queries**: Use vector search to find similar records, anomalies, and correlations relevant to the query
-    6. **Focused Insights**: Provide specific answers to the analytical question asked
-    7. **Supporting Analysis**: Include relevant context and supporting data for your conclusions
-
-    Focus on directly answering the query: '{query}' while providing comprehensive supporting analysis.
-  expected_output: |-
-    A targeted analytical report that specifically answers the query: '{query}', containing:
-
-    **Direct Answer:**
-    - Clear response to the specific analytical question asked
-    - Key findings and conclusions directly related to the query
-    - Quantitative results and metrics that address the question
-
-    **Supporting Analysis:**
-    - Relevant data patterns and trends that support the answer
-    - Statistical insights from the {num_rows} synthetic records
-    - Semantic search results that provide context
-    - Visual representations or data summaries where applicable
-
-    **Additional Insights:**
-    - Related findings that emerged during the analysis
-    - Recommendations based on the query results
-    - Potential follow-up questions or areas for deeper investigation
-
-    The report should be focused, actionable, and directly address the user's specific analytical needs.
-  agent: synthetic_data_analyst
-  context:
-  - store_synthetic_data_in_weaviate
+    - validate_and_finalize_synthetic_dataset

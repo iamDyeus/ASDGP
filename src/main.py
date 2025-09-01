@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 import sys
-from pdf_synthetic_data_generator.crew import PdfSyntheticDataGeneratorCrew
+from src.crew import PdfSyntheticDataGeneratorCrew
+from dotenv import load_dotenv
+load_dotenv()
 
 # This main file is intended to be a way for your to run your
 # crew locally, so refrain from adding unnecessary logic into this file.
@@ -10,12 +12,16 @@ from pdf_synthetic_data_generator.crew import PdfSyntheticDataGeneratorCrew
 def run():
     """
     Run the crew.
-    """
+    """ 
+    csv_data = open("assets/sample_data.csv", "r").read()
+    required_rows=20
     inputs = {
-        'num_rows': 'sample_value',
-        'query': 'sample_value'
+        'csv_data_template': csv_data,
+        'num_rows': required_rows
     }
-    PdfSyntheticDataGeneratorCrew().crew().kickoff(inputs=inputs)
+    result = PdfSyntheticDataGeneratorCrew().crew().kickoff(inputs=inputs)
+    with open("output.txt", "w", encoding="utf-8") as f:
+        f.write(str(result))
 
 
 def train():
@@ -23,8 +29,8 @@ def train():
     Train the crew for a given number of iterations.
     """
     inputs = {
-        'num_rows': 'sample_value',
-        'query': 'sample_value'
+        'csv_data_template': 'sample_value',
+        'num_rows': 'sample_value'
     }
     try:
         PdfSyntheticDataGeneratorCrew().crew().train(n_iterations=int(sys.argv[1]), filename=sys.argv[2], inputs=inputs)
@@ -47,8 +53,8 @@ def test():
     Test the crew execution and returns the results.
     """
     inputs = {
-        'num_rows': 'sample_value',
-        'query': 'sample_value'
+        'csv_data_template': 'sample_value',
+        'num_rows': 'sample_value'
     }
     try:
         PdfSyntheticDataGeneratorCrew().crew().test(n_iterations=int(sys.argv[1]), openai_model_name=sys.argv[2], inputs=inputs)

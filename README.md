@@ -1,54 +1,124 @@
-# PdfSyntheticDataGenerator Crew
+<div align="center">
 
-Welcome to the PdfSyntheticDataGenerator Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+# Agentic Synthetic Data Generation Pipeline 
 
-## Installation
+Generate realistic synthetic datasets from a small CSV template using an agentic workflow powered by crewAI and OpenAI.
 
-Ensure you have Python >=3.10 <3.14 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+<br/>
 
-First, if you haven't already, install uv:
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![Agentic](https://img.shields.io/badge/Agentic-crewai-6b48ff)
+![Status](https://img.shields.io/badge/status-experimental-orange)
 
-```bash
-pip install uv
+</div>
+
+## Overview
+
+The *ASGDP* analyzes a sample tabular dataset, infers patterns and constraints, generates new rows that preserve structure and relationships, validates quality, and exports results. It’s ideal for test data, demos, and POCs where realistic data is needed without exposing production records.
+
+## How it works
+
+The pipeline uses a sequential multi‑agent crew (see `src/crew.py` and `src/config/*`):
+
+- CSV Data Pattern Analyst → inspects the CSV template and infers schema, types, ranges, formats.
+- Synthetic Data Generator → produces N rows following the inferred rules.
+- Data Quality Orchestrator → validates consistency, uniqueness, and constraints.
+- Multi‑Format Storage Specialist → prepares CSV and JSON outputs for downstream use.
+
+Inputs are provided in `src/main.py` and the sample CSV lives in `assets/sample_data.csv`.
+
+## Project structure
+
+```
+.
+├─ assets/
+│  ├─ sample_data.csv      # your seed/template CSV
+│  └─ sample_data.pdf      # example asset (not required by the code path)
+├─ src/
+│  ├─ main.py              # CLI entry (run/train/replay/test)
+│  ├─ crew.py              # crew/agents/tasks wiring
+│  └─ config/
+│     ├─ agents.yaml       # agent definitions
+│     └─ tasks.yaml        # task prompts and outputs
+├─ requirements.txt
+├─ pyproject.toml
+├─ output.txt              # default run output
+└─ README.md
 ```
 
-Next, navigate to your project directory and install the dependencies:
+## Prerequisites
 
-(Optional) Lock the dependencies and install them by using the CLI command:
-```bash
-crewai install
-```
-### Customizing
+- Python 3.11+
+- An OpenAI API key
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
+## Setup
 
-- Modify `src/pdf_synthetic_data_generator/config/agents.yaml` to define your agents
-- Modify `src/pdf_synthetic_data_generator/config/tasks.yaml` to define your tasks
-- Modify `src/pdf_synthetic_data_generator/crew.py` to add your own logic, tools and specific args
-- Modify `src/pdf_synthetic_data_generator/main.py` to add custom inputs for your agents and tasks
+1. Create and activate a virtual environment
 
-## Running the Project
+- Windows (PowerShell):
 
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
-
-```bash
-$ crewai run
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate
 ```
 
-This command initializes the pdf_synthetic_data_generator Crew, assembling the agents and assigning them tasks as defined in your configuration.
+- macOS/Linux (bash/zsh):
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
 
-## Understanding Your Crew
+2. Install dependencies
 
-The pdf_synthetic_data_generator Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
+```bash
+pip install -r requirements.txt
+```
 
-## Support
+3. Configure environment
 
-For support, questions, or feedback regarding the PdfSyntheticDataGenerator Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
+Create a `.env` file in the project root with your key:
 
-Let's create wonders together with the power and simplicity of crewAI.
+```env
+OPENAI_API_KEY=sk-...
+```
+
+## Usage
+
+Place your seed CSV at `assets/sample_data.csv` and adjust `required_rows` in `src/main.py` as needed.
+
+- Generate synthetic data (default flow)
+
+```powershell
+python src/main.py run
+```
+
+
+Outputs:
+
+- A consolidated run report is written to `output.txt`.
+- The storage specialist agent is instructed to prepare CSV and JSON versions of the dataset; if token usage is a concern, tune `src/config/tasks.yaml` and `src/config/agents.yaml` to streamline formatting or reduce verbosity.
+
+## Configuration tips
+
+- Number of rows: edit `required_rows` in `src/main.py`.
+- Models/temperature: see `LLM(model=..., temperature=...)` in `src/crew.py`.
+- Task fidelity/output style: edit `src/config/tasks.yaml`.
+- Agent behavior and constraints: edit `src/config/agents.yaml`.
+
+## Notes
+
+- Agent Orchestration is provided by [crewai](https://github.com/crewai/crewai).
+- The current flow expects a CSV seed file. You can replace `assets/sample_data.csv` with your own template using the same headers/shape you want to emulate.
+
+## Troubleshooting
+
+- Missing API key: set `OPENAI_API_KEY` in your `.env`.
+- Rate limits/model errors: try a smaller `required_rows`, lower verbosity, or a lighter model.
+- Large CSVs: start with a small representative sample to improve reliability and reduce cost.
+
+## Future features
+
+1. Streamlit-based UI for upload, parameter tuning, and one-click runs.
+2. Upload any sample data format (CSV, JSON, Excel, Parquet, PDF) and let the LLM infer structure and build the dataset context automatically.
+3. “Ask your synthetic dataset” feature: attach a vector database and enable natural‑language querying over generated data.
